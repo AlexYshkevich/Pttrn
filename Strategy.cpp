@@ -4,7 +4,7 @@ class StrategyPay //
 {
 public:
 	virtual ~StrategyPay() {}
-	virtual void StrategyPay(const string & file) = 0;
+	virtual void StrategyPay() = 0;
 };
 
 class Strategy_1: public StrategyPay
@@ -23,30 +23,21 @@ public:
 	}
 };
 
-class Compressor
+class Context
 {
 public:
-	Compressor(Compression* comp) : p(comp) {}
-	~Compressor() { delete p; }
-	void compress(const string & file) {
-		p->compress(file);
-	}
+	Context() : p() {}
+	~Context() { delete p; }
+	void Context() {p->Context();}
 private:
-	Compression* p;
+	StrategyPay* p;
 };
 
-int main(int /*argc*/, char* /*argv*/[])
+int main()
 {
-	Client customClient;
-	Strategy_1 str1;
-	Strategy_2 str2;
-
-	customClient.setStrategyPay(&str1);
-	customClient.useStrategyPay();
-	customClient.setStrategyPay(&str2);
-	customClient.useStrategyPay();
-	customClient.setStrategyPay(&str3);
-	customClient.useStrategyPay();
-
+	Context* p = 1000;
+	p->Context();
+	delete p;
+	system("pause");
 	return 0;
 }

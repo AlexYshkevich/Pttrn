@@ -3,46 +3,36 @@
 class StrategyPay //
 {
 public:
-	virtual ~Strategy() {}
-	virtual void use(void) = 0;
+	virtual ~StrategyPay() {}
+	virtual void StrategyPay(const string & file) = 0;
 };
 
 class Strategy_1: public StrategyPay
 {
 public:
-	Strategy_1
-	void use(void){ std::cout << "Strategy_1" << std::endl; };
+	void StrategyPay(const string & file) {
+		cout << "Credit_Card" << endl;
+	}
 };
 
 class Strategy_2: public StrategyPay
 {
 public:
-	void use(void){ std::cout << "Strategy_2" << std::endl; };
+	void StrategyPay(const string & file) {
+		cout << "Apple_Pay" << endl;
+	}
 };
 
-class Context
-{
-protected:
-	StrategyPay* operation;
-
-public:
-	virtual ~Context() {}
-	virtual void useStrategyPay(void) = 0;
-	virtual void setStrategyPay(StrategyPay* v) = 0;
-};
-
-class Client: public Context
+class Compressor
 {
 public:
-	void useStrategyPay(void)
-	{
-		operation->use();
+	Compressor(Compression* comp) : p(comp) {}
+	~Compressor() { delete p; }
+	void compress(const string & file) {
+		p->compress(file);
 	}
-
-	void setStrategyPay(StrategyPay* o)
-	{
-		operation = o;
-	}
+private:
+	Compression* p;
 };
 
 int main(int /*argc*/, char* /*argv*/[])

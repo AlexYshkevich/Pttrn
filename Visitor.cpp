@@ -8,16 +8,16 @@ class Go;
 class Till;
 class Theend;
  
-class Visitor{
+class Visitor{ // Базовый класс
 public:
-  virtual void visit(Go& ref) = 0;
+  virtual void visit(Go& ref) = 0; //методы для Element
   virtual void visit(Till& ref) = 0;
   virtual void visit(Theend& ref) = 0;
 };
  
 class Element{
 public:
-  virtual void accept(Visitor& v) = 0;
+  virtual void accept(Visitor& v) = 0; // добавление метода в иерархию  
 };
  
 class Go: public Element{
@@ -44,11 +44,11 @@ public:
   }
 };
  
-class GetType: public Visitor{
+class GetType: public Visitor{ // Для каждого метода, которая должна выполняться для объектов Element, создаем производный от Visitor класс
 public:
   std::string value;
 public:
-  void visit(Go& ref)
+  void visit(Go& ref)// используют интерфейс Element
   {
     value="Go";
   }

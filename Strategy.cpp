@@ -1,14 +1,14 @@
 #include <iostream>
 #include <string>
   
-class Strategy 
+class Strategy // Абстрактный базовый класс. Определяет, как будут использоваться алгоритмы.
 {
   public:    
     virtual ~Strategy() {}
     virtual void compress( const string & file ) = 0;
 };
   
-class 1_Strategy : public Strategy
+class 1_Strategy : public Strategy // Подласс. Реализация алгоритма.
 {
   public:
     void compress( const string & file ) {
@@ -16,7 +16,7 @@ class 1_Strategy : public Strategy
     }
 };
   
-class 2_Strategy : public Strategy
+class 2_Strategy : public Strategy // Подласс. Реализация алгоритма.
 {
   public:
     void compress( const string & file ) {
@@ -24,7 +24,7 @@ class 2_Strategy : public Strategy
     }
 };
   
-class 3_Compression : public Strategy
+class 3_Compression : public Strategy // Подласс. Реализация алгоритма.
 {
   public:
     void compress( const string & file ) {
@@ -32,9 +32,7 @@ class 3_Compression : public Strategy
     }
 };
   
-  
-// Класс для использования
-class Context 
+class Context // Используя подклассы, ссылаясь на конкретный тип абстрактного класса, реализует выбранный алгоритм.
 {
   public:
     Context( Strategy* comp): p(comp) {}

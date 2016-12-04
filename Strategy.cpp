@@ -20,7 +20,7 @@ class 2_Strategy : public Strategy
 {
   public:
     void compress( const string & file ) {
-        cout << "ARJ compression" << endl;
+        cout << "RAR compression" << endl;
     }
 };
   
@@ -28,7 +28,7 @@ class 3_Compression : public Strategy
 {
   public:
     void compress( const string & file ) {
-        cout << "RAR compression" << endl;
+        cout << "ARJ compression" << endl;
     }
 };
   

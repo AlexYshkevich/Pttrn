@@ -1,45 +1,56 @@
 #include <iostream>
-
-class StrategyPay //
+#include <string>
+  
+class Strategy 
 {
-public:
-	virtual ~StrategyPay() {}
-	virtual void StrategyPay();
+  public:    
+    virtual ~Strategy() {}
+    virtual void compress( const string & file ) = 0;
 };
-
-class Strategy_1: public StrategyPay
-{
-public:
-	void StrategyPay()=0 {
-		cout << "Credit_Card" << endl;
-	}
-};
-
-class Strategy_2: public StrategyPay
-{
-public:
-	void StrategyPay() {
-		cout << "Apple_Pay" << endl;
-	}
-};
-
-class Context
+  
+class 1_Strategy : public Strategy
 {
   public:
-    Contex( StrategyPay* comp): p(comp) {}
-   ~Contex() { delete p; }
-    void compress() {
-      p->compress();
+    void compress( const string & file ) {
+        cout << "ZIP compression" << endl;
+    }
+};
+  
+class 2_Strategy : public Strategy
+{
+  public:
+    void compress( const string & file ) {
+        cout << "ARJ compression" << endl;
+    }
+};
+  
+class 3_Compression : public Strategy
+{
+  public:
+    void compress( const string & file ) {
+        cout << "RAR compression" << endl;
+    }
+};
+  
+  
+// Класс для использования
+class Context 
+{
+  public:
+    Context( Strategy* comp): p(comp) {}
+   ~Context() { delete p; }
+    void compress( const string & file ) {
+      p->compress( file);
     }
   private:
-    StrategyPay* p;
+    Strategy* p;
 };
   
   
 int main()
 {
-  Context* p = new Context( new Strategy_1);
-  p->compress();
+  Context* p = new Context( new 1_Strategy);
+  p->compress( "file.txt");
   delete p;
   return 0;
 }

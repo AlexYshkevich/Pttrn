@@ -4,13 +4,13 @@ class StrategyPay //
 {
 public:
 	virtual ~StrategyPay() {}
-	virtual void StrategyPay() = 0;
+	virtual void StrategyPay();
 };
 
 class Strategy_1: public StrategyPay
 {
 public:
-	void StrategyPay() {
+	void StrategyPay()=0 {
 		cout << "Credit_Card" << endl;
 	}
 };

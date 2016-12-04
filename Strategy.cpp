@@ -10,7 +10,7 @@ public:
 class Strategy_1: public StrategyPay
 {
 public:
-	void StrategyPay(const string & file) {
+	void StrategyPay() {
 		cout << "Credit_Card" << endl;
 	}
 };
@@ -18,26 +18,28 @@ public:
 class Strategy_2: public StrategyPay
 {
 public:
-	void StrategyPay(const string & file) {
+	void StrategyPay() {
 		cout << "Apple_Pay" << endl;
 	}
 };
 
 class Context
 {
-public:
-	Context() : p() {}
-	~Context() { delete p; }
-	void Context() {p->Context();}
-private:
-	StrategyPay* p;
+  public:
+    Contex( StrategyPay* comp): p(comp) {}
+   ~Contex() { delete p; }
+    void compress() {
+      p->compress();
+    }
+  private:
+    StrategyPay* p;
 };
-
+  
+  
 int main()
 {
-	Context* p = 1000;
-	p->Context();
-	delete p;
-	system("pause");
-	return 0;
+  Context* p = new Context( new Strategy_1);
+  p->compress();
+  delete p;
+  return 0;
 }

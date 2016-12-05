@@ -2,6 +2,12 @@
 #include<vector>
 #include<string>
  
+//Создать новую игру
+//Открыть существующую игру
+//Сохранить игру
+//Сделать очередной ход
+//Отменить последний ход
+
 class Game
 {
   public:
@@ -90,7 +96,6 @@ class UndoCommand: public Command
       pgame->open( "TEMP_FILE");
     }
 };
- 
  
 int main()
 {

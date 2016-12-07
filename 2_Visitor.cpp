@@ -12,7 +12,7 @@ class Visitor{ // Базовый класс
  
 public:
   virtual void visit(Go& ref) = 0; //методы для Element
-  virtual void visit(Till& ref) = 0;
+  virtual void visit(Till& ref) = 0;//их реализация использует открытый интрерфейс Element
   virtual void visit(Theend& ref) = 0;
 };
  
@@ -23,7 +23,7 @@ public:
  
 class Go: public Element{
 public:
-  void accept(Visitor& v)
+  void accept(Visitor& v)//вызывается при передаче созданного объекта в Element
   {
     v.visit(*this);
   }
@@ -45,8 +45,9 @@ public:
   }
 };
  
-class DominnantRuleDisgrase: public Visitor{ // Для каждого метода, которая должна выполняться для объектов Element, создаем производный от Visitor класс
-public:
+class DominnantRuleDisgrase: public Visitor{ // Для каждого метода, котоый должен выполняться для объектов Element, создаем производный от Visitor класс
+//Обрабатывает функциональность подклассов Element
+ public:
   std::string value;
 public:
   void visit(Go& ref)// используют интерфейс Element

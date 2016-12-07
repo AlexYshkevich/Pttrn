@@ -6,7 +6,7 @@ class Strategy // Абстрактный базовый класс. Опреде
 {
   public:    
     virtual ~Strategy() {}
-    virtual void compress( const string & file ) = 0;
+    virtual void compress( const string & file ) = 0;//определяет способ вызова алгоритма
 };
   
 class 1_Strategy : public Strategy // Подласс. Реализация алгоритма.

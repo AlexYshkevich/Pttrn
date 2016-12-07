@@ -9,7 +9,7 @@ class Till;
 class Theend;
  
 class Visitor{ // Базовый класс
- 
+//Нужен для создания объектов
 public:
   virtual void visit(Go& ref) = 0; //методы для Element
   virtual void visit(Till& ref) = 0;//их реализация использует открытый интрерфейс Element

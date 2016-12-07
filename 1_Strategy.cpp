@@ -25,7 +25,7 @@ class 2_Strategy : public Strategy // Подласс. Реализация ал�
     }
 };
   
-class 3_Compression : public Strategy // Подласс. Реализация алгоритма.
+class 3_Strategy : public Strategy // Подласс. Реализация алгоритма.
 {
   public:
     void compress( const string & file ) {

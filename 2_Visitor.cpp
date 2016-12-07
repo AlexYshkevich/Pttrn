@@ -9,6 +9,7 @@ class Till;
 class Theend;
  
 class Visitor{ // Базовый класс
+ 
 public:
   virtual void visit(Go& ref) = 0; //методы для Element
   virtual void visit(Till& ref) = 0;
@@ -44,7 +45,7 @@ public:
   }
 };
  
-class GetType: public Visitor{ // Для каждого метода, которая должна выполняться для объектов Element, создаем производный от Visitor класс
+class DominnantRuleDisgrase: public Visitor{ // Для каждого метода, которая должна выполняться для объектов Element, создаем производный от Visitor класс
 public:
   std::string value;
 public:

@@ -42,7 +42,6 @@ class Elephant
     }
 };
   
-  
 // Класс "Армия", содержащий все типы боевых единиц
 class Army 
 {
@@ -62,11 +61,13 @@ class Army
     }
 };
   
-  
 // Базовый класс ArmyBuilder объявляет интерфейс для поэтапного 
 // построения армии и предусматривает его реализацию по умолчанию
- 
-class ArmyBuilder
+
+//____________________
+
+//координирует процесс сборки частей
+class Builder//объявляет интерфейсы для построения отдельных частей продукта
 {
   protected: 
     Army* p;
@@ -84,7 +85,12 @@ class ArmyBuilder
   
   
 // Римская армия имеет все типы боевых единиц кроме боевых слонов
-class RomanArmyBuilder: public ArmyBuilder
+
+
+//реализуют эти интерфейсы подходящим образом
+//создают или получают нужные ресурсы, сохраняют промежуточные результаты, контролируют результаты выполнения операций(пример)
+// составляют соответствующее представление
+class RomanArmyBuilder: public Builder
 {    
   public:    
     void createArmy() { p = new Army; }
@@ -96,7 +102,7 @@ class RomanArmyBuilder: public ArmyBuilder
   
   
 // Армия Карфагена имеет все типы боевых единиц кроме катапульт
-class CarthaginianArmyBuilder: public ArmyBuilder
+class CarthaginianArmyBuilder: public Builder
 {    
   public:    
     void createArmy() { p = new Army; }
@@ -109,10 +115,15 @@ class CarthaginianArmyBuilder: public ArmyBuilder
   
 // Класс-распорядитель, поэтапно создающий армию той или иной стороны.
 // Именно здесь определен алгоритм построения армии.
-class Director
+
+
+//______________________________
+
+
+class Director// определяет алгоритм поэтапного создания продукта
 {    
   public:    
-    Army* createArmy( ArmyBuilder & builder ) 
+    Army* createArmy(Builder & builder ) 
     { 
         builder.createArmy();
         builder.buildInfantryman();
@@ -128,8 +139,8 @@ class Director
 int main()
 {   
     Director dir;
-    RomanArmyBuilder ra_builder;
-    CarthaginianArmyBuilder ca_builder;
+    RomanBuilder ra_builder;
+    CarthaginianBuilder ca_builder;
      
     Army * ra = dir.createArmy( ra_builder);
     Army * ca = dir.createArmy( ca_builder);

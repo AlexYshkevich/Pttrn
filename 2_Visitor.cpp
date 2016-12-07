@@ -32,6 +32,7 @@ public:
 class Till: public Element{
 public:
   void accept(Visitor& v)
+//В качестве параметра принимаетуказатель или ссылку на абстрактный базовый класс иерархии Visitor
   {
     v.visit(*this);
   }

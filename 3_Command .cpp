@@ -43,7 +43,8 @@ class Command
     Game * pgame;       
 };
  
-class CreateGameCommand: public Command 
+class CreateGameCommand: public Command //определяет получателя запроса (указатель на объект-получатель)
+ // Определяет необходимую для выполнения операцию (метод этого объекта)
 {
   public:
     CreateGameCommand( Game * p ) : Command( p) {}

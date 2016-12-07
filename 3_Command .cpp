@@ -37,7 +37,7 @@ class Command
 {   
   public:
     virtual ~Command() {}
-    virtual void execute() = 0;
+    virtual void execute() = 0;//нужен для вызова необходимой операции получателя 
   protected:
     Command( Game* p ): pgame( p) {}
     Game * pgame;       

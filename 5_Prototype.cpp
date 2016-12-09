@@ -1,3 +1,6 @@
+#include <iostream>
+#include <vector>
+
 class Stooge {
 public:
    virtual Stooge* clone() = 0;

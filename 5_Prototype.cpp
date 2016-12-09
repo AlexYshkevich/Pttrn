@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 class Stooge {
 public:
@@ -16,7 +17,7 @@ private:
 
 int main() {
    vector roles;
-   int             choice;
+   int choice;
 
    while (true) {
       cout << "Larry(1) Moe(2) Curly(3) Go(0): ";

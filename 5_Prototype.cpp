@@ -8,6 +8,48 @@ public:
    virtual void slap_stick() = 0;
 };
 
+
+
+
+class Larry : public Prototype {
+public:
+   Stooge*   clone() { return new Larry; }
+   void slap_stick() {
+      cout << "Larry: poke eyes\n"; }
+};
+
+
+
+class Moe : public Prototype {
+public:
+   Stooge*   clone() { return new Moe; }
+   void slap_stick() {
+      cout << "Moe: slap head\n"; }
+};
+
+
+
+class Curly : public Prototype {
+public:
+   Stooge*   clone() { return new Curly; }
+   void slap_stick() {
+      cout << "Curly: suffer abuse\n"; }
+};
+
+Stooge* Factory::s_prototypes[] = {
+   0, new Larry, new Moe, new Curly
+};
+Stooge* Factory::make_stooge( int choice ) {
+   return s_prototypes[choice]->clone();
+}
+
+
+
+
+
+
+
+//__________________________________________________________________________________
 class Factory {
 public:
    static Stooge* make_stooge( int choice );
@@ -34,28 +76,3 @@ int main() {
       delete roles[i];
 }
 
-class Larry : public Prototype {
-public:
-   Stooge*   clone() { return new Larry; }
-   void slap_stick() {
-      cout << "Larry: poke eyes\n"; }
-};
-class Moe : public Prototype {
-public:
-   Stooge*   clone() { return new Moe; }
-   void slap_stick() {
-      cout << "Moe: slap head\n"; }
-};
-class Curly : public Prototype {
-public:
-   Stooge*   clone() { return new Curly; }
-   void slap_stick() {
-      cout << "Curly: suffer abuse\n"; }
-};
-
-Stooge* Factory::s_prototypes[] = {
-   0, new Larry, new Moe, new Curly
-};
-Stooge* Factory::make_stooge( int choice ) {
-   return s_prototypes[choice]->clone();
-}

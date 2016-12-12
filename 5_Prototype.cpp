@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 
-class Stooge {
+class Prototype {
 public:
    virtual Stooge* clone() = 0;
    virtual void slap_stick() = 0;
@@ -34,19 +34,19 @@ int main() {
       delete roles[i];
 }
 
-class Larry : public Stooge {
+class Larry : public Prototype {
 public:
    Stooge*   clone() { return new Larry; }
    void slap_stick() {
       cout << "Larry: poke eyes\n"; }
 };
-class Moe : public Stooge {
+class Moe : public Prototype {
 public:
    Stooge*   clone() { return new Moe; }
    void slap_stick() {
       cout << "Moe: slap head\n"; }
 };
-class Curly : public Stooge {
+class Curly : public Prototype {
 public:
    Stooge*   clone() { return new Curly; }
    void slap_stick() {
